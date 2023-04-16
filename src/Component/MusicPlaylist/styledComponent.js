@@ -15,6 +15,7 @@ export const MusicPlayerMainImageContainer = styled.div`
 `
 export const PlaylistMainHeading = styled.h1`
   color: white;
+  font-size: 20px;
 `
 
 export const PlaylistMainParagraph = styled.p`
@@ -44,11 +45,14 @@ export const SearchBoxAndIconContainer = styled.div`
 
 export const SearchInput = styled.input`
   outline: none;
-  width: 250px;
+  width: 100px;
   background: none;
   border: none;
   padding: 5px;
   color: #cbd5e1;
+  @media all and (min-width: 700px) {
+    width: 250px;
+  }
 `
 export const SongsUnOrderListContainer = styled.ul`
   list-style: none;

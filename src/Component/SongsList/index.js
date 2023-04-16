@@ -1,4 +1,4 @@
-import {AiFillDelete} from 'react-icons/ai'
+import {AiOutlineDelete} from 'react-icons/ai'
 
 import {
   SongsListItemComplete,
@@ -28,7 +28,7 @@ const SongsList = props => {
       <SongsListDeleteDuration>
         <SongsListTime>{duration}</SongsListTime>
         <SongsListDeleteButton>
-          <AiFillDelete />
+          <AiOutlineDelete size={20} />
         </SongsListDeleteButton>
       </SongsListDeleteDuration>
     </SongsListItemComplete>
