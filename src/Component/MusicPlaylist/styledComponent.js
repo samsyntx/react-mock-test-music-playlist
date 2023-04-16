@@ -58,4 +58,10 @@ export const SongsUnOrderListContainer = styled.ul`
   list-style: none;
   padding: 0px;
   margin: 30px 0px 25px 0px;
+  overflow: auto;
+`
+export const NoMusicAvaialble = styled.h1`
+  color: white;
+  width: 100%;
+  text-align: center;
 `

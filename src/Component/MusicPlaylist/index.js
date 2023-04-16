@@ -11,6 +11,7 @@ import {
   SearchInput,
   SearchBoxAndIconContainer,
   SongsUnOrderListContainer,
+  NoMusicAvaialble,
 } from './styledComponent'
 
 const initialTracksList = [
@@ -97,7 +98,21 @@ const initialTracksList = [
 ]
 
 class MusicPlaylist extends Component {
+  state = {userInput: ''}
+
+  changeUserInput = event => {
+    this.setState({userInput: event.target.value})
+  }
+
   render() {
+    const {userInput} = this.state
+
+    const includedUserInput = initialTracksList.filter(each =>
+      each.name.toLowerCase().includes(userInput.toLowerCase()),
+    )
+
+    const isListAvailable = includedUserInput.length > 0
+
     return (
       <MainMusicPlayerContainer>
         <MusicPlayerMainImageContainer>
@@ -108,14 +123,23 @@ class MusicPlaylist extends Component {
           <SearchBoxContainerHeading>
             <PlaylistMainHeading>Songs Playlist</PlaylistMainHeading>
             <SearchBoxAndIconContainer>
-              <SearchInput type="search" placeholder="Search" />
+              <SearchInput
+                onChange={this.changeUserInput}
+                value={userInput}
+                type="search"
+                placeholder="Search"
+              />
               <AiOutlineSearch size={25} />
             </SearchBoxAndIconContainer>
           </SearchBoxContainerHeading>
           <SongsUnOrderListContainer>
-            {initialTracksList.map(eachItem => (
-              <SongsList key={eachItem.id} eachItemDetail={eachItem} />
-            ))}
+            {isListAvailable ? (
+              includedUserInput.map(eachItem => (
+                <SongsList key={eachItem.id} eachItemDetail={eachItem} />
+              ))
+            ) : (
+              <NoMusicAvaialble>No Songs Found</NoMusicAvaialble>
+            )}
           </SongsUnOrderListContainer>
         </SongsPlaylistContainer>
       </MainMusicPlayerContainer>
