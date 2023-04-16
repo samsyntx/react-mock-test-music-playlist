@@ -13,8 +13,12 @@ import {
 } from './styledComponent'
 
 const SongsList = props => {
-  const {eachItemDetail} = props
+  const {eachItemDetail, callToDeleteFun} = props
   const {id, imageUrl, name, genre, duration} = eachItemDetail
+
+  const clickedOnDelete = () => {
+    callToDeleteFun(id)
+  }
 
   return (
     <SongsListItemComplete>
@@ -27,7 +31,7 @@ const SongsList = props => {
       </SongsListContainerImageContent>
       <SongsListDeleteDuration>
         <SongsListTime>{duration}</SongsListTime>
-        <SongsListDeleteButton>
+        <SongsListDeleteButton onClick={clickedOnDelete}>
           <AiOutlineDelete size={20} />
         </SongsListDeleteButton>
       </SongsListDeleteDuration>

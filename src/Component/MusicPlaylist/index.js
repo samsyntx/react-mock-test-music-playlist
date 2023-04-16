@@ -11,7 +11,7 @@ import {
   SearchInput,
   SearchBoxAndIconContainer,
   SongsUnOrderListContainer,
-  NoMusicAvaialble,
+  NoMusicAvailable,
 } from './styledComponent'
 
 const initialTracksList = [
@@ -98,20 +98,25 @@ const initialTracksList = [
 ]
 
 class MusicPlaylist extends Component {
-  state = {userInput: ''}
+  state = {displayList: initialTracksList, userInput: ''}
 
   changeUserInput = event => {
     this.setState({userInput: event.target.value})
   }
 
-  render() {
-    const {userInput} = this.state
+  callToDeleteFun = uniqueId => {
+    const {displayList} = this.state
+    const filteredList = displayList.filter(each => each.id !== uniqueId)
+    this.setState({displayList: filteredList})
+  }
 
-    const includedUserInput = initialTracksList.filter(each =>
+  render() {
+    const {displayList, userInput} = this.state
+    const displayListAsPerInput = displayList.filter(each =>
       each.name.toLowerCase().includes(userInput.toLowerCase()),
     )
 
-    const isListAvailable = includedUserInput.length > 0
+    const isDisplayListAvailable = displayListAsPerInput.length > 0
 
     return (
       <MainMusicPlayerContainer>
@@ -125,20 +130,24 @@ class MusicPlaylist extends Component {
             <SearchBoxAndIconContainer>
               <SearchInput
                 onChange={this.changeUserInput}
-                value={userInput}
                 type="search"
+                value={userInput}
                 placeholder="Search"
               />
               <AiOutlineSearch size={25} />
             </SearchBoxAndIconContainer>
           </SearchBoxContainerHeading>
           <SongsUnOrderListContainer>
-            {isListAvailable ? (
-              includedUserInput.map(eachItem => (
-                <SongsList key={eachItem.id} eachItemDetail={eachItem} />
+            {isDisplayListAvailable ? (
+              displayListAsPerInput.map(eachItem => (
+                <SongsList
+                  key={eachItem.id}
+                  eachItemDetail={eachItem}
+                  callToDeleteFun={this.callToDeleteFun}
+                />
               ))
             ) : (
-              <NoMusicAvaialble>No Songs Found</NoMusicAvaialble>
+              <NoMusicAvailable>No Songs Found</NoMusicAvailable>
             )}
           </SongsUnOrderListContainer>
         </SongsPlaylistContainer>
