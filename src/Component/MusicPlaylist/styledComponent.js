@@ -60,7 +60,7 @@ export const SongsUnOrderListContainer = styled.ul`
   margin: 30px 0px 25px 0px;
   overflow: auto;
 `
-export const NoMusicAvailable = styled.h1`
+export const NoMusicAvailable = styled.p`
   color: white;
   width: 100%;
   text-align: center;

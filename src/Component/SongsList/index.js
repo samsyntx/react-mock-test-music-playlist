@@ -23,7 +23,7 @@ const SongsList = props => {
   return (
     <SongsListItemComplete>
       <SongsListContainerImageContent>
-        <SongsListImage src={imageUrl} alt={id} />
+        <SongsListImage src={imageUrl} alt="track" />
         <SongsListTitleContainer>
           <SongsListHeading>{name}</SongsListHeading>
           <SongsListCategory>{genre}</SongsListCategory>
@@ -31,7 +31,7 @@ const SongsList = props => {
       </SongsListContainerImageContent>
       <SongsListDeleteDuration>
         <SongsListTime>{duration}</SongsListTime>
-        <SongsListDeleteButton onClick={clickedOnDelete}>
+        <SongsListDeleteButton data-testid="delete" onClick={clickedOnDelete}>
           <AiOutlineDelete size={20} />
         </SongsListDeleteButton>
       </SongsListDeleteDuration>

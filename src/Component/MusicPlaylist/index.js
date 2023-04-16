@@ -121,7 +121,7 @@ class MusicPlaylist extends Component {
     return (
       <MainMusicPlayerContainer>
         <MusicPlayerMainImageContainer>
-          <PlaylistMainHeading>Ed Sheerna</PlaylistMainHeading>
+          <PlaylistMainHeading>Ed Sheeran</PlaylistMainHeading>
           <PlaylistMainParagraph>Singer</PlaylistMainParagraph>
         </MusicPlayerMainImageContainer>
         <SongsPlaylistContainer>

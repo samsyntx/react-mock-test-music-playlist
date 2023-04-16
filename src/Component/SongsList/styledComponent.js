@@ -25,7 +25,7 @@ export const SongsListTitleContainer = styled.div`
   margin-right: 5px;
 `
 
-export const SongsListHeading = styled.h1`
+export const SongsListHeading = styled.p`
   font-size: 20px;
   font-weight: 500;
   @media all and (min-width: 700px) {
